@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="Parent">
+        <input type="text" id="text1"/>
+        <button id="button1" >BUTTON</button>
+    </div>
+    <script>
+        console.log(`Hi - line13`)
+
+        const inputElement = document.getElementById('text1');
+        console.log(inputElement);
+        const buttonElement = document.getElementById('button1');
+        console.log(buttonElement);
+
+        inputElement.addEventListener('change' , function(e){
+            console.log(`${e.target.value}`)
+        })
+        inputElement.addEventListener('input' , function(e){
+            console.log(`${e.target.value}`)
+        })
+
+        buttonElement.addEventListener('click' , function(e){
+            console.log(`You clicked the button`)
+            e.stopPropagation
+        })
+        parentElement.addEventListener('click' , function(e){
+            console.log(`You clicked the parent`)
+
+        })
+    </script>
+</body>
+</html>
