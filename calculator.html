@@ -20,27 +20,148 @@
             <button class="num" id="one">One</button>
             <button class="num" id="two">Two</button>
             <button class="num" id="three">Three</button>
-            <button class="sign" id="+">+</button>
+            <button class="sign" id="plus">+</button>
         </div>
         <div class="row">
             <button class="num" id="four">Four</button>
             <button class="num" id="five">Five</button>
             <button class="num" id="six">Six</button>
-            <button class="sign" id="-">-</button>
+            <button class="sign" id="minus">-</button>
         </div>
         <div class="row">
             <button class="num" id="seven">Seven</button>
             <button class="num" id="eight">Eight</button>
             <button class="num" id="nine">Nine</button>
-            <button class="sign" id="x">x</button>
+            <button class="sign" id="multiply">x</button>
         </div>
         <div class="row">
             <button class="fill" id="fill1"></button>
             <button class="num" id="zero">Zero</button>
             <button class="fill" id="fill2"></button>
-            <button class="sign" id="%">%</button>
+            <button class="sign" id="divide">%</button>
         </div>
+        <p id="answer"></p>
     </div>
 </div>
 </body>
+<script>
+    const solutionMessage = document.getElementById('answer');
+    const oneButton = document.getElementById('one');
+    const twoButton = document.getElementById('two');
+    const threeButton = document.getElementById('three');
+    const fourButton = document.getElementById('four');
+    const fiveButton = document.getElementById('five');
+    const sixButton = document.getElementById('six');
+    const sevenButton = document.getElementById('seven');
+    const eightButton = document.getElementById('eight');
+    const nineButton = document.getElementById('nine');
+    const zeroButton = document.getElementById('zero');
+    const plusButton = document.getElementById('plus');
+    const minButton = document.getElementById('minus');
+    const multiButton = document.getElementById('multiply');
+    const divButton = document.getElementById('divide');
+
+    let num1 = 'x'
+    let op = '_'
+    let num2 = 'x'
+    let final = 'x'
+
+
+
+    oneButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 1
+        } else {
+             num2 = 1
+        }
+    });
+    twoButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 2
+        } else {
+             num2 = 2
+        }
+    });
+    threeButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 3
+        } else {
+             num2 = 3
+        }
+    });
+    fourButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 4
+        } else {
+             num2 = 4
+        }
+    });
+    fiveButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 5
+        } else {
+             num2 = 5
+        }
+    });
+    sixButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 6
+        } else {
+             num2 = 6
+        }
+    });
+    sevenButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 7
+        } else {
+             num2 = 7
+        }
+    });
+    eightButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 8
+        } else {
+             num2 = 8
+        }
+    });
+    nineButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 9
+        } else {
+             num2 = 9
+        }
+    });
+    zeroButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+             num1 = 0
+        } else {
+             num2 = 0
+        }
+    });
+    plusButton.addEventListener('click', function(){
+         op = 'plus'
+    });
+    minButton.addEventListener('click', function(){
+         op = 'minus'
+    });
+    multiButton.addEventListener('click', function(){
+         op = 'multi'
+    });
+    divButton.addEventListener('click', function(){
+         op = 'div'
+    });
+
+    if (op === 'plus' && num2 !== 'x'){
+         final = num1 + num2
+    } else if (op === 'minus' && num2 !== 'x') {
+         final = num1 - num2
+    } else if (op === 'multi' && num2 !== 'x') {
+         final = num1 * num2
+    } else if (op === 'div' && num2 !== 'x'){
+         final = num1 / num2
+    }
+    if (final !== 'x') {
+        solutionMessage.textContent = `${num1} ${op} ${num2} = ${final}`;
+    }
+</script>
 </html>
