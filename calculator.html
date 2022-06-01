@@ -5,7 +5,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        button{
+        .math{
             width: 50px;
             margin-top: 5px;
             margin-bottom: 5px;
@@ -17,35 +17,41 @@
 <div class="container">
     <div class="content">
         <div class="row">
-            <button class="num" id="one">One</button>
-            <button class="num" id="two">Two</button>
-            <button class="num" id="three">Three</button>
-            <button class="sign" id="plus">+</button>
+            <button class="math" id="one">One</button>
+            <button class="math" id="two">Two</button>
+            <button class="math" id="three">Three</button>
+            <button class="math" id="plus">+</button>
         </div>
         <div class="row">
-            <button class="num" id="four">Four</button>
-            <button class="num" id="five">Five</button>
-            <button class="num" id="six">Six</button>
-            <button class="sign" id="minus">-</button>
+            <button class="math" id="four">Four</button>
+            <button class="math" id="five">Five</button>
+            <button class="math" id="six">Six</button>
+            <button class="math" id="minus">-</button>
         </div>
         <div class="row">
-            <button class="num" id="seven">Seven</button>
-            <button class="num" id="eight">Eight</button>
-            <button class="num" id="nine">Nine</button>
-            <button class="sign" id="multiply">x</button>
+            <button class="math" id="seven">Seven</button>
+            <button class="math" id="eight">Eight</button>
+            <button class="math" id="nine">Nine</button>
+            <button class="math" id="multiply">x</button>
         </div>
         <div class="row">
-            <button class="fill" id="fill1"></button>
-            <button class="num" id="zero">Zero</button>
-            <button class="sign" id="equal">=</button>
-            <button class="sign" id="divide">%</button>
+            <button class="math" id="pi">&pi;</button>
+            <button class="math" id="zero">Zero</button>
+            <button class="math" id="equal">=</button>
+            <button class="math" id="divide">%</button>
         </div>
         <p id="answer"></p>
+        <p id="old"></p>
+        <button id="new">New calculation</button>
+        <button id="clear">CLEAR</button>
     </div>
 </div>
 </body>
 <script>
-    const solutionMessage = document.getElementById('answer');
+    const clearButton = document.getElementById('clear');
+    const newButton = document.getElementById('new');
+    let oldSolutionMessage = document.getElementById('old');
+    let solutionMessage = document.getElementById('answer');
     const oneButton = document.getElementById('one');
     const twoButton = document.getElementById('two');
     const threeButton = document.getElementById('three');
@@ -61,6 +67,7 @@
     const multiButton = document.getElementById('multiply');
     const divButton = document.getElementById('divide');
     const equalButton = document.getElementById('equal');
+    const piButton = document.getElementById('pi');
 
     let num1 = 'x'
     let op = '0'
@@ -139,6 +146,13 @@
              num2 = 0
         }
     });
+    piButton.addEventListener('click', function(){
+        if (num1 === 'x'){
+            num1 = 3.14
+        } else {
+            num2 = 3.14
+        }
+    });
     plusButton.addEventListener('click', function(){
          op = '+'
     });
@@ -151,21 +165,34 @@
     divButton.addEventListener('click', function(){
          op = '%'
     });
-    equalButton.addEventListener('click', function(){
-        if (op === '+' && num2 !== 'x'){
+
+    equalButton.addEventListener('click', function() {
+        if (op === '+' && num2 !== 'x') {
             final = num1 + num2
         } else if (op === '-' && num2 !== 'x') {
             final = num1 - num2
         } else if (op === 'x' && num2 !== 'x') {
             final = num1 * num2
-        } else if (op === '%' && num2 !== 'x'){
+        } else if (op === '%' && num2 !== 'x') {
             final = num1 / num2
         }
-        });
+    });
    equalButton.addEventListener('click', function(){
        solutionMessage.textContent = `${num1} ${op} ${num2} = ${final}`;
    });
+newButton.addEventListener('click', function(){
+    num1 = 'x'
+    op = '0'
+    num2 = 'x'
+    final = '0'
+    oldSolutionMessage.textContent = solutionMessage.textContent
+    solutionMessage.textContent = ''
 
+});
+clearButton.addEventListener('click', function(){
+    oldSolutionMessage.textContent = ''
+    solutionMessage.textContent = ''
+})
 
 </script>
 </html>
