@@ -37,7 +37,7 @@
         <div class="row">
             <button class="fill" id="fill1"></button>
             <button class="num" id="zero">Zero</button>
-            <button class="fill" id="fill2"></button>
+            <button class="sign" id="equal">=</button>
             <button class="sign" id="divide">%</button>
         </div>
         <p id="answer"></p>
@@ -60,11 +60,12 @@
     const minButton = document.getElementById('minus');
     const multiButton = document.getElementById('multiply');
     const divButton = document.getElementById('divide');
+    const equalButton = document.getElementById('equal');
 
     let num1 = 'x'
-    let op = '_'
+    let op = '0'
     let num2 = 'x'
-    let final = 'x'
+    let final = '0'
 
 
 
@@ -139,29 +140,32 @@
         }
     });
     plusButton.addEventListener('click', function(){
-         op = 'plus'
+         op = '+'
     });
     minButton.addEventListener('click', function(){
-         op = 'minus'
+         op = '-'
     });
     multiButton.addEventListener('click', function(){
-         op = 'multi'
+         op = 'x'
     });
     divButton.addEventListener('click', function(){
-         op = 'div'
+         op = '%'
     });
+    equalButton.addEventListener('click', function(){
+        if (op === '+' && num2 !== 'x'){
+            final = num1 + num2
+        } else if (op === '-' && num2 !== 'x') {
+            final = num1 - num2
+        } else if (op === 'x' && num2 !== 'x') {
+            final = num1 * num2
+        } else if (op === '%' && num2 !== 'x'){
+            final = num1 / num2
+        }
+        });
+   equalButton.addEventListener('click', function(){
+       solutionMessage.textContent = `${num1} ${op} ${num2} = ${final}`;
+   });
 
-    if (op === 'plus' && num2 !== 'x'){
-         final = num1 + num2
-    } else if (op === 'minus' && num2 !== 'x') {
-         final = num1 - num2
-    } else if (op === 'multi' && num2 !== 'x') {
-         final = num1 * num2
-    } else if (op === 'div' && num2 !== 'x'){
-         final = num1 / num2
-    }
-    if (final !== 'x') {
-        solutionMessage.textContent = `${num1} ${op} ${num2} = ${final}`;
-    }
+
 </script>
 </html>

@@ -41,15 +41,19 @@
     </div>
     <div class="cardList">
     </div>
+    <button id="results">Press For results</button>
+    <p id="finishMessage"></p>
   </div>
 </div>
-<script src="index.js">
+<script>
+  const resultButton = document.getElementById('results');
+  const finalMessage = document.getElementById('finishMessage');
   const cardList = document.querySelector('.cardList');
   let amount = 0;
   const pointAmount = document.getElementById('pointAmount');
   buildBoard();
   let interval = setInterval(function(){
-    addCard(cardList.children.length + 1) //make it start at 1 not 0
+    addCard(cardList.children.length + 1)
   }, 2000);
   cardList.addEventListener('click', function (e){
     console.log(e.target);
@@ -71,8 +75,8 @@
       clearInterval(interval);
     }
 
-
   });
+
   function addCard(value){
     let card = document.createElement('div');
     card.classList.add('card');
@@ -86,6 +90,20 @@
       addCard('starter');
     }
   }
+
+resultButton.addEventListener('click', function(){
+  if (amount < 42) {
+    finalMessage.textContent = `You got 3 stars and ${amount} points`
+  } else if (amount < 45) {
+    finalMessage.textContent = `You got 2 stars and ${amount} points`
+  } else if (amount < 48) {
+    finalMessage.textContent = `You got 1 stars and ${amount} points`
+  } else {
+    finalMessage.textContent = `You got 0 stars and ${amount} points`
+  }
+});
+
+
 </script>
 </body>
 </html>
